@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TpCompteBancaire")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f6c135875e79475826167f6a7e6514b7242b1de9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2a18e539ed7d4c861349028fb621f7204a679fbc")]
 [assembly: System.Reflection.AssemblyProductAttribute("TpCompteBancaire")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TpCompteBancaire")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
