@@ -1,0 +1,14 @@
+C:\Users\r.russi\TpCompteBancaire\bin\Debug\net9.0\TpCompteBancaire.exe
+C:\Users\r.russi\TpCompteBancaire\bin\Debug\net9.0\TpCompteBancaire.deps.json
+C:\Users\r.russi\TpCompteBancaire\bin\Debug\net9.0\TpCompteBancaire.runtimeconfig.json
+C:\Users\r.russi\TpCompteBancaire\bin\Debug\net9.0\TpCompteBancaire.dll
+C:\Users\r.russi\TpCompteBancaire\bin\Debug\net9.0\TpCompteBancaire.pdb
+C:\Users\r.russi\TpCompteBancaire\obj\Debug\net9.0\TpCompteBancaire.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\r.russi\TpCompteBancaire\obj\Debug\net9.0\TpCompteBancaire.AssemblyInfoInputs.cache
+C:\Users\r.russi\TpCompteBancaire\obj\Debug\net9.0\TpCompteBancaire.AssemblyInfo.cs
+C:\Users\r.russi\TpCompteBancaire\obj\Debug\net9.0\TpCompteBancaire.csproj.CoreCompileInputs.cache
+C:\Users\r.russi\TpCompteBancaire\obj\Debug\net9.0\TpCompteBancaire.dll
+C:\Users\r.russi\TpCompteBancaire\obj\Debug\net9.0\refint\TpCompteBancaire.dll
+C:\Users\r.russi\TpCompteBancaire\obj\Debug\net9.0\TpCompteBancaire.pdb
+C:\Users\r.russi\TpCompteBancaire\obj\Debug\net9.0\TpCompteBancaire.genruntimeconfig.cache
+C:\Users\r.russi\TpCompteBancaire\obj\Debug\net9.0\ref\TpCompteBancaire.dll
