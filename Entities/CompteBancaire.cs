@@ -6,13 +6,19 @@ public class CompteBancaire
 {
     //atributs
     public double solde;
+
+    public static int compteurCompte;
     
     public int NumCompte { get; }
 
-    public CompteBancaire(int numCompte) {
-        
-        this.NumCompte = numCompte;
+    public int TituId;
 
+    public CompteBancaire(int numCompte, int titulaireId) {
+        
+        TituId = titulaireId;
+        compteurCompte ++;
+        NumCompte = compteurCompte;
+        this.NumCompte = numCompte;
     }
 
     public void AjouterSolde(double solde)
@@ -27,6 +33,11 @@ public class CompteBancaire
     public void RetirerSolde(double solde)
     {
         this.solde -= solde;
+    }
+
+    public void AfficherSolde(double solde)
+    {
+        Console.WriteLine($"Titulaire : {solde}");
     }
 
 }

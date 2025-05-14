@@ -22,7 +22,7 @@ public class AppBanque
             Console.WriteLine("| 1. Ajouter un titulaire  |");
             Console.WriteLine("| 2. Liste des Titulaires  |");
             Console.WriteLine("| 3. Choisir le titulaire  |");
-            Console.WriteLine("| 4. Choisir le compte     |");
+            Console.WriteLine("| 4. Ajouter un compte     |");
             Console.WriteLine("| 5. Quitter l'application |");
             Console.WriteLine(" --------------------------");
             Console.Write("Veuillez entrer votre choix : ");
@@ -71,38 +71,24 @@ public class AppBanque
         // Creation d'un nouveau titulaire
         Titulaire nouveauTitulaire = new Titulaire(nom);
         listeTitulaires.Add(nouveauTitulaire);
-
-        Console.WriteLine($"Le titulaire {nom} a été ajouté avec succès.");
+        Console.WriteLine(" ---------------------------------------------");
+        Console.WriteLine($"| Le titulaire {nom} a été ajouté avec succès. |");
+        Console.WriteLine(" ---------------------------------------------");
+        Console.WriteLine("");
     }
 
     public void AjouterCompte()
     {
         Console.WriteLine("\n--- Ajout d'un commpte bancaire ---");
-        int numCompte = int.Parse(Console.ReadLine());
+        Console.WriteLine("");
 
-        CompteBancaire nouveauCompte = new CompteBancaire(numCompte);
-        listeComptes.Add(nouveauCompte);
-
-        Console.Write("Veuillez entrer le solde initial : ");
-        double solde = double.Parse(Console.ReadLine());
-
-        Console.WriteLine($"Le compte numéro : {numCompte} à été ajouté");
-    }
-
-    public void ChoisirTitulaire()
-    {
-        if (listeTitulaires.Count == 0)
-        {
-            Console.WriteLine("Aucun titulaire enregistré.");
-            return;
-        }
+        //choisir le titulaire à qui on ajouteras un compte
+        Console.WriteLine("Choisissez le titulaire pour qui vous voulez ajouter un compte bancaire : ");
 
         for (int i = 0; i < listeTitulaires.Count; i++)
         {
             Console.WriteLine($"{i + 1}. {listeTitulaires[i].Nom}");
         }
-
-        Console.WriteLine("Selectionnez un titulaire (numero)");
 
         try
         {
@@ -112,11 +98,77 @@ public class AppBanque
             {
                 Titulaire tituSelectionne = listeTitulaires[index];
 
-                Console.WriteLine($"Vous avez selectionné le titulaire {tituSelectionne.Nom}, ");
-                Console.WriteLine($" Tapez 1 pour voir vos comptes");
+                Console.WriteLine("-------------------------------------------------------------");
+                Console.WriteLine($"| Vous avez selectionné le titulaire : {tituSelectionne.Nom} |");
+                Console.WriteLine("-------------------------------------------------------------");
+                Console.WriteLine("");
+
+                // récupérer l'id du titulaire sélectionné
+                int titulaireId = tituSelectionne.Id;
+                
+                // ajouter un compte à l'id du titulaire sélectionné
+
+                Console.WriteLine($"Veuillez inserer le numero unique qu'aura votre compte pour le titulaire :{tituSelectionne.Nom}");
+                int numCompte = int.Parse(Console.ReadLine());
+                
+                CompteBancaire nouveauCompte = new CompteBancaire(numCompte, titulaireId);
+                listeComptes.Add(nouveauCompte);
+
+                Console.Write("Veuillez entrer le solde initial : ");
+                double solde = double.Parse(Console.ReadLine());
+
+                Console.WriteLine($"Le compte numéro : {numCompte} du titulaire : {tituSelectionne.Nom} à été ajouté");
+            }
+        }
+        catch (FormatException)
+        {
+
+            throw;
+        }
+    }
+
+    public void ChoisirTitulaire()
+    {
+        if (listeTitulaires.Count == 0)
+        {
+            Console.WriteLine("");
+            Console.WriteLine("-----------------------------");
+            Console.WriteLine("| Aucun titulaire enregistré. |");
+            Console.WriteLine("-----------------------------");
+            return;
+        }
+
+        for (int i = 0; i < listeTitulaires.Count; i++)
+        {
+            Console.WriteLine($"{i + 1}. {listeTitulaires[i].Nom}");
+        }
+
+        Console.WriteLine("------------------------------------");
+        Console.WriteLine("| Selectionnez un titulaire (numero) |");
+        Console.WriteLine("------------------------------------");
+
+
+        try
+        {
+            int index = Convert.ToInt32(Console.ReadLine()) - 1;
+
+            if (index >= 0 && index < listeTitulaires.Count)
+            {
+                Titulaire tituSelectionne = listeTitulaires[index];
+
+                Console.WriteLine("----------------------------------------");
+                Console.WriteLine($"| Vous avez selectionné le titulaire : {tituSelectionne.Nom} |");
+                Console.WriteLine("----------------------------------------");
+                Console.WriteLine("");
+                Console.WriteLine("----------------------------------------------------");
+                Console.WriteLine($"| Tapez 1 pour voir vos comptes (numéros de comptes) |");
+                Console.WriteLine("----------------------------------------------------");
 
                 // Readline -> entier
                 string choix = Console.ReadLine();
+
+                Console.WriteLine("");
+
                 // verifie la valeur 
                 if (choix != "1")
                 {
@@ -126,7 +178,7 @@ public class AppBanque
 
                 if (choix == "1")
                 {
-                    ChoisirCompte();// fonction pas encore créée
+                    ChoisirCompte();
                 }
             }
         }
@@ -139,27 +191,38 @@ public class AppBanque
 
     public void ChoisirCompte()
     {
-        //verifiecation si un compte existe
+        //verification si un compte existe
         if (listeComptes.Count == 0)
         {
-            Console.WriteLine("Le titulaire choisi ne possede encore aucun compte.");
+            Console.WriteLine("-----------------------------------------------------");
+            Console.WriteLine("| Le titulaire choisi ne possede encore aucun compte. |");
+            Console.WriteLine("-----------------------------------------------------");
+            Console.WriteLine("");
+
             return;
         }
 
-        // affichage des comptes du titulaire selectionné
 
+
+        //verifier l'id du titulaire sélectionné
+        //veririfer l'id des comptes
+        //afficher tout les compte pour qui l'ID est la meme que celle du titulaire séléctionné
         for (int i = 0; i < listeComptes.Count; i++)
         {
             Console.WriteLine($"{i + 1}. {listeComptes[i].NumCompte}");
         }
 
-        Console.WriteLine("Selectionnez un titulaire (numero)");
+        Console.WriteLine("-------------------------------------");
+        Console.WriteLine("| Selectionnez un compte (numero) |");
+        Console.WriteLine("-------------------------------------");
+        Console.WriteLine("");
+
         //choix du compte du titulaire
         try
         {
             int index = Convert.ToInt32(Console.ReadLine()) - 1;
 
-            if (index >= 0 && index > listeComptes.Count)
+            if (index >= 0 && index < listeComptes.Count)
             {
                 CompteBancaire compteSelectionne = listeComptes[index];
 
@@ -216,10 +279,15 @@ public class AppBanque
 
     public void ListTitulaire()
     {
+        Console.WriteLine("");
+        Console.WriteLine("--------- Liste Titulaires -----------");
+
         foreach (Titulaire titulaire in listeTitulaires)
         {
             titulaire.AfficherInfo();
-            Console.WriteLine("-----------------------------");
         }
+
+        Console.WriteLine("--------------------------------------");
+        Console.WriteLine("");
     }
 }
